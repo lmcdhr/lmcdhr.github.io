@@ -1,7 +1,7 @@
 # Site settings
 title: 骆牧成大好人~
 SEOTitle: 骆牧成大好人的博客 | lmcdhr Blog
-header-img: img/post-bg-desk.jpg
+header-img: img/81-yKbVND-L._SY355_.jpg
 email: luomucheng2018@outlook.com
 description: "莫愁前路无知己，天下谁人不识君"
 keyword: "LMC, lmcdhr, blog, leetcode"
@@ -97,4 +97,14 @@ service-worker: true
 
 # Friends
 friends: [
+    {
+        title: "简书·BY",
+        href: "http://www.jianshu.com/u/e71990ada2fd"
+    },{
+        title: "Apple",
+        href: "https://apple.com"
+    },{
+        title: "Apple Developer",
+        href: "https://developer.apple.com/"
+    }
 ]
