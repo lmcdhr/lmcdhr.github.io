@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      九章基础班：Double pointer
+title:      九章算法基础班：Double pointer
 subtitle:   two sum && partition
 date:       2020-04-01
 author:     lmcdhr
