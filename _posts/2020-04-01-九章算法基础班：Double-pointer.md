@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      [basic]Double pointer
+title:      九章基础班：Double pointer
 subtitle:   two sum && partition
 date:       2020-04-01
 author:     lmcdhr
@@ -18,9 +18,15 @@ tags:
 ## 1. 使用场景及题型
 #### 1. 同向及反向双指针类：
 1. 一般的数列数组中使用，类似于求回文，in-place交换等等
+
+
+
 #### 2. Two Sum类问题
 1. Two Sum类问题一般都是求数组中多个数字之和的类似问题
 2. Two Sum类问题一般有Hash Map解法和双指针解法，一般而言，双指针解法的通用性较好，且时间复杂度较好，但是如果数组没有排序好，需要花费额外的nlogn时间进行排序；但是空间复杂度上，因为不需要额外的hash map，空间复杂度比hash map好
+
+
+
 #### 3. Partition类问题
 1. Partition类一般是将数组按照指定条件进行分类并重新排列，一般指针记录每一种类型的交界处
 2. 一些特殊的Sort也可以算作Partition类问题，比如经典的三色旗（荷兰旗）问题
@@ -62,7 +68,10 @@ class Solution {
     }
 }
 ```
+
+
 ### 2. Two Sum类型
+
 #### 永远滴神：leetcode 1. Two Sum
 https://leetcode.com/problems/two-sum/
 1. 题目：不知道的请去眼科或者脑科
@@ -94,7 +103,10 @@ class Solution {
 }
 ```
 
-#### 167. Two Sum II - Input array is sorted
+
+
+#### leetcode 167. Two Sum II - Input array is sorted
+
 https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
 1. 题目：与two sum相同，但是数据已经sort好
 2. 思路：双指针
@@ -120,7 +132,10 @@ class Solution {
     }
 }
 ```
+
+
 #### leetcode 15. 3->4->n Sum
+
 https://leetcode.com/problems/3sum/
 
 https://leetcode.com/problems/4sum/
@@ -193,7 +208,10 @@ class Solution {
     }
 }
 ```
+
+
 #### 不等式two sum之一 leetcode 1099. Two Sum Less Than K
+
 https://leetcode.com/problems/two-sum-less-than-k/
 1. 题目：给予一个数组，及一个target，要求找到两个比k小的两数之和，且这个和最接近k
 2. 思路：
@@ -225,7 +243,10 @@ class Solution {
     }
 }
 ```
+
+
 #### 不等式two sum之二 leetcode 611. Valid Triangle Number
+
 https://leetcode.com/problems/valid-triangle-number/
 1. 题目：给予一个数组，求出所有三个数字的组合的数量，且以这三个数为长度的边可以组成一个三角形
 2. 思路：
@@ -261,7 +282,10 @@ class Solution {
     }
 }
 ```
+
+
 ### 3. partition问题
+
 #### leetcode 75. Sort Colors
 https://leetcode.com/problems/sort-colors/
 1. 题目：给予一个数组，内有若干个0,1,2要求整理数组，将所有0置于数组左侧，1中间，2右边（与sort效果相同）
