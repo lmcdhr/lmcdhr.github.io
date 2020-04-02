@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      [basic]Data Structure
+title:      九章算法基础班：Data Structure
 subtitle:   Array & LinkedList
 date:       2020-03-31
 author:     lmcdhr
@@ -53,6 +53,9 @@ outline
 ### 1. linkedlist
 1. 题型：翻转，快慢指针找中点以及环，排序，归并
 2. dummy node的使用：一般用于链表改变结构时，设dummy.next为head，如果需要返回head，最后返回dummy.next即可
+
+
+
 ### 2. array
 1. 题型：排序，subarray
 2. prefix sum的使用：
@@ -61,9 +64,15 @@ outline
 
      1. 求任何一个subarray的sum，即从index为i的点一直加和到j的点，我们可以从推导得知：sum[i,j]= sum[0,j]-sum[0,i-1],即从0至j的和，减去从0至i-1的和
      2. 我们遍历array一次，即可分次获得到所有点的sum，记录这些sum，便可以获得所有可能子数组的sum
+
+
+
 ## 3. 栗子
 ### 1. 链表的翻转 
 #### leetcode 206. Reverse Linked List
+
+https://leetcode.com/problems/reverse-linked-list/
+
 1. 题目：给予一个链表，整个翻转，返回新的head
 2. 思路： 经典的链表三步翻转：pre记录左侧点，cur记录其next，temp记录cur的next，翻转cur与pre的关系，pre更新为cur，cur更新为temp，pre从null开始，直至cur为null跳出
 3. 代码：
@@ -84,6 +93,9 @@ class Solution {
 }
 ```
 #### leetcode 92. Reverse Linked List II
+
+https://leetcode.com/problems/reverse-linked-list-ii/
+
 1. 题目：给予一个链表head，以及int m&n（m<n），要求翻转第m个node到第n个node之间的链表（包含m及n），返回head
 2. 思路：
 
@@ -170,7 +182,10 @@ class Solution {
     }
 }
 ```
+
+
 ### 2. 求中点
+
 #### leetcode143. Reorder List
 https://leetcode.com/problems/reorder-list/
 1. 题目： 给予一个链表head，要求重新整理链表，从L: L0→L1→…→Ln-1→Ln变为L0→Ln→L1→Ln-1→L2→Ln-2→…
@@ -233,7 +248,10 @@ class Solution {
     } 
 }
 ```
+
+
 ### 3. 链表deep copy 
+
 #### leetcode138. Copy List with Random Pointer
 https://leetcode.com/problems/copy-list-with-random-pointer/
 1. 题目：给予一个linkedlist，每个node的信息包含val,next以及一个随机的指针random，要求deep copy这个链表
@@ -304,7 +322,10 @@ class Solution {
     }
 }
 ```
+
+
 ### 4. 链表排序 
+
 #### leetcode 148. Sort List
 https://leetcode.com/problems/sort-list/
 1. 题目：给予一个链表head，要求sort这个链表，要求时间复杂度nlogn，空间const
@@ -372,7 +393,10 @@ class Solution {
     }
 }
 ```
+
+
 ### 5. with trees 
+
 #### leetcode108. Convert Sorted Array to Binary Search Tree
 1. 题目：给予一个排好序的array，要求将其转换为一棵BST
 2. 思路：
@@ -406,7 +430,10 @@ class Solution {
     }
 }
 ```
+
+
 ### 6. quick select
+
 #### 4. Median of Two Sorted Arrays
 https://leetcode.com/problems/median-of-two-sorted-arrays/
 1. 题目：给予两个排好序的array，求他们两个array所组成的大array的中位数
@@ -472,7 +499,10 @@ class Solution {
     }
 }
 ```
+
+
 ### 7. prefix sum
+
 #### leetcode 53. Maximum Subarray
 https://leetcode.com/problems/maximum-subarray/
 1. 给予一个array，求一个子数组，使其和在所有子数组中最大，并return这个和
