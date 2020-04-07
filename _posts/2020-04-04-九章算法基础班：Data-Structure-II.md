@@ -291,8 +291,7 @@ class Solution {
             num.add(i);
         }
         return num.peek();
-    }
-    
+    }  
 }
 ```
 
