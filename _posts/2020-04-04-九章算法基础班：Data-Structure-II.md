@@ -26,6 +26,9 @@ outline
 #### 1. hash table, hash map与hash set
 1. Hash Set: 实际是set，只存储key，只能查询是否存在某个数据
 2. Hash table 与 Hash Map: 二者都存储key value pair，但是hash table是多线程安全，因此使用多线程访问的时候需要使用hash table
+
+
+
 #### 2. Hash的实现原理：Hash Function
 1. hash function的作用：将一个key转换为一个对应且无规律的0~capacity-1的数字
 2. hash function的算法栗子：
@@ -34,6 +37,9 @@ outline
 
 3. 注意：因为hash function的算法复杂度是O(size of key)，而且hash table的插入，删除，查找操作必须要经过hash function，**因此不可以简单地认为hash的时间复杂度是O(1)**,这个需要由key的复杂程度确定，尤其是使用string作为key的时候
 4. magic number 31：我们使用hash function时，经常每一位*31，这个31由经验而来，效率最好（太大影响速度，太小冲突太多）
+
+
+
 #### 3. 冲突collision问题的解决办法
 1. closed hashing：
      1. 冲突时，依次查找下一个位置，直至找到一个空的位置插入
@@ -42,6 +48,9 @@ outline
 2. open hashing：
      1. 冲突时，共用一个位置，但是由链表实现内部数据的连接，key所在的位置实际是一个dummy node，插入数据时，从头插入（越新的数据越靠近头）
      2. 缺点：由于链表的特性，过多数据积累与一个位置时，访问速度受限
+
+
+
 #### 4. rehashing
 1. 定义：当hash的size不够，无法满足数据的capacity时，进行的操作，将hash进行扩充
 2. 实现：将size扩充一倍，类似于vector
@@ -55,7 +64,11 @@ outline
     1. 增add：向二叉树中增加一个值，需要重新heapify，时间复杂度logn
     2. 删remove：向二叉树中删除一个值，也需要heapify，时间复杂度logn
     3. 推出poll：推出顶部元素（最大值或最小值），实际为直接推出root，然后根据左右结点关系重新更换root，时间复杂度O(1)
+
+
+
 #### 2. Heap的API：PriorityQueue
+
 1. 定义：Queue<?> queue = new Priority<?>();
 2. comparator函数的使用（重载）
      1. PriorityQueue自动生成一个最小堆，如果需要一个最大堆，或者根据数据类型的不同替换大小对比关系，则需要重新定义comparator函数，这里给出一个栗子：
@@ -80,6 +93,7 @@ class Solution {
 ### 1. Hash设计类
 #### 亚麻必考题 leetcode 146. LRU Cache
 1. 题目：设计一个指定size的LRU cache（least recent use cache），即size满了之后，删除上次使用离现在最久的元素，设计两个操作，一个put（put一对值，key和value），一个get（通过key获取value），要求两者的时间复杂度是O(1)
+
 2. 思路：
 
       LRU并不难设计，本题一考点在于如何设计两个操作使得其操作时间为const，这道题我当初思考的时候，分为两部分：
@@ -95,10 +109,15 @@ class Solution {
       3. 输入是新value，且size已经达到上限：将第一个点删除（这里可以使用设置dummy node来简化操作），将新的点添加于末尾
 
       这里还有一种特殊情况，即例如size limit为1，那么只会存在一个node，我们在上述第三种情况下，将当前点删除的时候，会有一个语句：node.next.pre = node.pre，但是node.next=null，没有pre，会造成null pointer exception，因此做这一步之前我们需要先判断一下node.next是否为空，是的话就不用再进行这一操作
+      
 3. 引申
 
       java中有一个数据结构LinkedHashMap,既是hash+双向链表的组合，本题中我们实现的便是这一数据结构，以后可以直接使用，方便写代码
+      
 4. 代码：
+
+
+
 ```java
 public class LRUCache {
     
@@ -112,8 +131,7 @@ public class LRUCache {
         this.val = val;
         this.next = null;
         this.pre = null;
-    }
-    
+    }  
 }
 
     private Map<Integer, ListNode> map;
@@ -230,7 +248,10 @@ class Solution {
 }
 ```
 
+
+
 #### 维持size = k的堆 leetcode 215. Kth Largest Element in an Array
+
 https://leetcode.com/problems/kth-largest-element-in-an-array/
 1. 题目：给予一个数组（无序），要求求出数组内第k大的数
 2. 类似题型：high five（亚麻高频题），973. K Closest Points to Origin
@@ -264,6 +285,8 @@ class Solution {
     
 }
 ```
+
+
 
 ### 3. 堆与其他算法的对比
 
