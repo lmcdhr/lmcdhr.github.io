@@ -206,6 +206,7 @@ public class LRUCache {
 ### 2. heap的维持
 #### leetcode 264. Ugly Number II
 1. 题目: 求第n个ugly number，ugly number是一类数字，他们的质因数只可能是2，3，5
+
 2. 思路：
 
       ugly number不难求，只需从1开始，依序乘2，3，5即可得到他的下一个ugly number，由此往复，即可得到无数个ugly number。但是我们不能保证得到的ugly number是从小到大的，比如我们从1开始，分别获得了2，3，5，随后2分别乘，得到了4，6，10，3再乘的时候，得到6，9，15，但是6和9就比先得到的10小，而10因为2比3优先的关系，先得出了。因此我们引入堆来解决这个问题，每次循环做乘法的时候，现将得到的数置入堆，然而再pop出最小的元素，循环到第n次的时候，就可获得第n个ugly number了
@@ -213,6 +214,9 @@ public class LRUCache {
       本题中，因为数字增长很快，因此我选用了long来进行操作，这是为了防止溢出，虽然程序的输出是int，但是我们之前提到了，堆中的数字可能会比当前输出的数字大，因此有可能超出了int的范围，所以使用long是严谨且必须的
 
 3. 代码：
+
+
+
 ```java
 class Solution {
     public int nthUglyNumber(int n) {
@@ -254,13 +258,19 @@ class Solution {
 
 https://leetcode.com/problems/kth-largest-element-in-an-array/
 1. 题目：给予一个数组（无序），要求求出数组内第k大的数
+
 2. 类似题型：high five（亚麻高频题），973. K Closest Points to Origin
+
 3. 思路：
 
       本题是较为经典的维持一个size为k的堆，具体做法为：循环遍历，像堆中增加新的元素，当size<k时，直接添加，如果size超过k，则对比最小（或最大）元素和当前要加入的元素，poll两者中更小（更大）的那个，即可维持堆的size保持不变
 
       leetcode讨论区中，有的解法时在size超过k时，先将元素压入堆，再poll，这样虽然代码简单，但是却多了一步不必要的add，即如果要加入的元素比堆顶元素小，则该元素不应该被置入堆中，而add操作的时间复杂度logn，获取堆顶元素的时间复杂度是1，这样如果我们无脑add，就会在这种不必要的情况下增加时间消耗，会显得我们代码优化不好，因此不要这么写
+      
 4. 代码：
+
+
+
 ```java
 class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -288,10 +298,13 @@ class Solution {
 
 
 
+
+
 ### 3. 堆与其他算法的对比
 
 #### 时间空间的取舍 leetcode 23. Merge k Sorted Lists
 1. 题目：给予k个sorted linkedlist，要求将其整合为一个sorted linkedlist
+
 2. 思路：
 
       本题有多种思路，可以简化为两种（我们假设链表长度为n）：
@@ -301,6 +314,9 @@ class Solution {
       一般类似题型都可以使用这两种做法，使用堆时间上比较好，但是需要额外的空间，根据要求使用不同做法即可
 
 3. 代码：
+
+
+
 ```java
 class Solution {
     
