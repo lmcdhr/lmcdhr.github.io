@@ -12,8 +12,6 @@ tags:
     - 九章基础班
 ---
 
-
-
 ## Data Structure II Hash & Heap
 
 ```
@@ -266,12 +264,15 @@ https://leetcode.com/problems/kth-largest-element-in-an-array/
       本题是较为经典的维持一个size为k的堆，具体做法为：循环遍历，像堆中增加新的元素，当size<k时，直接添加，如果size超过k，则对比最小（或最大）元素和当前要加入的元素，poll两者中更小（更大）的那个，即可维持堆的size保持不变
 
       leetcode讨论区中，有的解法时在size超过k时，先将元素压入堆，再poll，这样虽然代码简单，但是却多了一步不必要的add，即如果要加入的元素比堆顶元素小，则该元素不应该被置入堆中，而add操作的时间复杂度logn，获取堆顶元素的时间复杂度是1，这样如果我们无脑add，就会在这种不必要的情况下增加时间消耗，会显得我们代码优化不好，因此不要这么写
-      
+
+
+
 4. 代码：
 
 
 
 ```java
+
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         Queue<Integer> num = new PriorityQueue<Integer>();
@@ -293,6 +294,7 @@ class Solution {
         return num.peek();
     }  
 }
+
 ```
 
 
@@ -300,6 +302,8 @@ class Solution {
 
 
 ### 3. 堆与其他算法的对比
+
+
 
 #### 时间空间的取舍 leetcode 23. Merge k Sorted Lists
 1. 题目：给予k个sorted linkedlist，要求将其整合为一个sorted linkedlist
