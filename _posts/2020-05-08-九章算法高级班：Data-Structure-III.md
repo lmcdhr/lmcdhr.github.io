@@ -551,7 +551,7 @@ class Solution {
     
     Set<String> res;
     TrieNode root;
-    int[][] directions = new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
+    int[][] directions = new int[][]{{0,1},{0,-1},{1,0},{-1,0}} ;
     int[][] visited;
     
     public List<String> findWords(char[][] board, String[] words) {
