@@ -17,6 +17,7 @@ tags:
 ## Data Structure III
 
 
+#### 由于github的原因，无法输入双层{}，因此本文中的direction向量都没有初始化，使用代码之前请先补全
 
 ## 1. Union Find
 
