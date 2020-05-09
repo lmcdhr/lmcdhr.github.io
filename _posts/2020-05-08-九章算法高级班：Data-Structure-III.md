@@ -227,7 +227,7 @@ class Solution {
     int[][] graph;
     List<Integer> res;
     int count;
-    int[][] directions = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
+    int[][] directions；
     
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         res = new ArrayList<Integer>();
