@@ -206,10 +206,10 @@ https://leetcode.com/problems/number-of-islands-ii/
 
 2. 思路：
 
-    number of island I 我们已经解出如何利用三种方法(bfs,dfs,unionfind)解题，那么本题最直接的思路就是每次新输入一个子数组，就做一次number of island I, 时间复杂度kmn（数组长度k，矩阵维度m*n），本题我们使用unionfind进行优化
+    number of island I 我们已经解出如何利用三种方法(bfs,dfs,unionfind)解题，那么本题最直接的思路就是每次新输入一个子数组，就做一次number of island I, 时间复杂度kmn(数组长度k，矩阵维度m*n),本题我们使用unionfind进行优化
 
     本题中，使用bfs和dfs的劣势在于，每新输入一个点，我们需要重新遍历整个图，之前的结果完全用不上；但是如果使用union find，每次图形更新时，我们只需要查看：
-    1. 是否已经更新过该点？如果更新过，continue
+    1. 是否已经更新过该点？如果更新过，跳过
     2. 如果是新的点，那么可能出现了一个新的岛，我们count++
     3. 在此之后，查看他四周有没有已经存在的点？如果有，且他们的父节点不一致（说明并不是一个连通块内）的话，说明这个点并不可以作为新的岛，而是其他连通块新进入的部分，直接count--
     4. 四周每有一个点，就要count--一次，因为如果四周有多个岛，那么这个新点的加入会将他们连在一起，使用rank table进行合并
@@ -217,7 +217,9 @@ https://leetcode.com/problems/number-of-islands-ii/
     本题中我们可以看到，union find巧妙地利用了每次输入后的图形，对一个新的点，我们检查其四周就可以得出连通块个数的变化，时间复杂度简化为(m*n+k)，而且m*n是我们初始化的时候所耗费的，真正花费在处理上的时间复杂度只是k
 
 3. 代码：
+
 ```java
+
 class Solution {
 
     int[] uf;
@@ -296,6 +298,7 @@ class Solution {
     }
     
 }
+
 ```
 
 
