@@ -136,7 +136,8 @@ class Solution {
 }
 ```
 
-#### 42的follow up leetcode 407. Trapping Rain Water II
+#### 2.42的follow up leetcode 407. Trapping Rain Water II
+
 1. 题目：还是盛雨水题，但是这次数据从一维变成二维
 2. 思路：
 
@@ -145,6 +146,7 @@ class Solution {
      这道题中有一个容易弄错的点，我们使用一个数据结构存储一个点的坐标和高度，使用bfs遍历到四周符合条件的点时，这个点的高度不能直接存为该点的高度，而是遍历到该点的兜底边的长度；而兜底边的长度如何求呢？应该是当前的兜底边长度与遍历到的点的高度二者中较大的那个，因为随着bfs，我们遍历到一个高度很高的点，他周围的点就会由他进行兜底，即使这个点不够高，也有最周围的点为他兜底；因此如果出现了一个更长的兜底边，储水能力会改变，因此我们每次存储的是当前结点的高度与当前兜底边二者中的更大值，对兜底边进行实时的更新
 
 3. 代码：
+
 ```java
 class Cell{
     int i;
@@ -213,7 +215,9 @@ class Solution {
 ```
 
 #### 3. leetcode 480. Sliding Window Median
+
 https://leetcode.com/problems/sliding-window-median/
+
 1. 题目：给予一个数组和一个sliding window的长度k，window从数组最左边一直slide到最右边，要求输出每次sliding window滑动过后，window内的中位数
 2. 思路：
 
@@ -222,6 +226,7 @@ https://leetcode.com/problems/sliding-window-median/
      不过这道题做的时候有一个int溢出的问题出现在compare函数，我一开始将compare函数写成left-right，但是这样如果数据溢出无法解决，正确的做法是写成left.compareto(right)或者将compare函数省略为Collections.reverseOrder()
 
 3. 代码：
+
 ```java
 class Solution {
     
@@ -309,13 +314,16 @@ class Solution {
 ### 2. stack基础
 
 #### 1. leetcode 155. Min Stack
+
 https://leetcode.com/problems/min-stack/
+
 1. 题目：实现一个min stack数据结构，要求可以push和pop数据，并能实现get min，即输出当前stack中的最小值
 2. 思路：
 
      实现stack很简单，本题难点在于如何实时查找min，如果使用一个int来存储最小值，那么如果最小值被pop，无法做到回溯；为了解决这个问题，我们可以设置另外一个stack，用来存储最小值：即每次新输入一个数据，我们可以通过比对得出新的最小值，并将这个最小值置入最小值的栈中，这样每个输入数据和每次输入获得的最小值就一一对应了起来，每输入一个数据，就会新加一个最小值，每pop一个数据，这个数据对应的最小值也会被pop，这样就实现了最小值的回溯功能
 
 3. 代码：
+
 ```java
 class MinStack {
 
@@ -356,6 +364,7 @@ class MinStack {
 ```
 
 #### 2. 栈的翻转 leetcode 232. Implement Queue using Stacks
+
 https://leetcode.com/problems/implement-queue-using-stacks/
 
 1. 题目：用多个stack来实现一个queue，要求实现push,peek,pop,isempty功能
@@ -368,6 +377,7 @@ https://leetcode.com/problems/implement-queue-using-stacks/
      这里还有一点小优化，我们不一定每次输入数据，都进行翻转，这样会使时间复杂度变为n，我们只需要在stack2为空的时候，将stack1中的数据全pop进stack2即可，这样每输出一次，stack2就pop一次，一直到stack2再为空，我们再将1中的数据补充进去即可，这样做可以使得时间复杂度近似为O(1)
 
 3. 代码：
+
 ```java
 class MyQueue {
 
@@ -419,6 +429,7 @@ class MyQueue {
 ### 3. 单调栈 Monotonous stack
 
 #### 1. 单调栈的维护 leetcode 84. Largest Rectangle in Histogram
+
 https://leetcode.com/problems/largest-rectangle-in-histogram/
 
 1. 题目：给予一个数组，里面的数字可以理解为一个个宽度为1，高度不一且互相邻接的矩形，要求求得这一图形中一个最大的矩形面积
@@ -429,6 +440,7 @@ https://leetcode.com/problems/largest-rectangle-in-histogram/
      维护的大概思路为：数组从左至右遍历，每遍历到一个点，检查该点height与栈顶元素height的关系，如果该点的height<栈顶元素的height，说明已经为栈顶元素找到了右侧第一个小的元素，pop出栈顶元素，新的栈顶元素就是原来栈顶元素的左界，用左界右界算出宽度，高度就是栈顶元素的height，看大小情况更新max即可
 
 3. 代码：
+
 ```java
 class Solution {
     public int largestRectangleArea(int[] heights) {
@@ -463,6 +475,7 @@ https://leetcode.com/problems/maximal-rectangle/
      看似猛如虎，实则0-5，我们已经在一维空间得知了解法，二维空间不过是一维空间的堆叠，我们将二维数组一层一层的切开，使用dp求出第n层为底时，向上看所能得到的height一维矩阵（1的数量），这样就将问题转化为了84题，轻松得出结果
 
 3. 代码：
+
 ```java
 class Solution {
     public int maximalRectangle(char[][] matrix) {
@@ -521,6 +534,7 @@ https://leetcode.com/problems/decode-string/
      本题并不难，如果使用递归，那就是每有一个'['，就将相关参数传入下一级递归即可，本题我们试着用stack优化递归stack overflow的问题；stack会将有效信息从头开始存储，并从末尾开始处理，也就是从最内层开始处理，而递归是直接将参数传给下一层函数，相当于从外往里处理；如果递归是遇到一个'['就开始下一层递归，那么stack就是一直将数据压入栈，直到遇到第一个']'开始处理参数，即已经遇到了最内层的数据，并从这层数据开始往外部展开，将新生成的子数据推入栈，一层层往外处理即可
 
 3. 代码：
+
 ```java
 class Solution {
     
