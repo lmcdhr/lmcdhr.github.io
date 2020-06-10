@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      九章算法基础班：Data Structure III
+title:      九章算法高级班：Data Structure III
 subtitle:   Union Find & Trie
 date:       2020-05-08
 author:     lmcdhr
